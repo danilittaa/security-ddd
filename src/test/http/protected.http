@@ -1,0 +1,115 @@
+### GET all cat hotels
+GET http://localhost:8080/api/v1/catHotels
+Authorization: Basic admin admin
+Accept: application/json
+###
+
+### GET first cat hotel
+GET http://localhost:8080/api/v1/catHotels/1
+Authorization: Basic admin admin
+Accept: application/json
+###
+
+### DELETE second cat hotel
+DELETE http://localhost:8080/api/v1/catHotels/2
+Authorization: Basic admin admin
+Accept: application/json
+###
+
+### CREATE new cat hotel
+POST http://localhost:8080/api/v1/catHotels
+Authorization: Basic admin admin
+Content-Type: application/json
+
+{
+  "name": "Cozy Cat Inn",
+  "location": "123 Main Street, Cat City",
+  "capacity": 20,
+  "availableRooms": 5,
+  "pricePerNight": 50.0,
+  "amenities": [
+    "Heated Beds",
+    "Grooming Services",
+    "24/7 Veterinary Care"
+  ],
+  "staff": [
+    {
+      "id": "staff1",
+      "name": "Alice Johnson",
+      "role": "MANAGER"
+    },
+    {
+      "id": "staff2",
+      "name": "Bob Smith",
+      "role": "CARETAKER"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "review1",
+      "author": "John Doe",
+      "rating": 5,
+      "comment": "My cat loved it here!"
+    },
+    {
+      "id": "review2",
+      "author": "Jane Doe",
+      "rating": 4,
+      "comment": "Great service, but a bit pricey."
+    }
+  ]
+}
+
+### UPDATE first hotel
+PUT http://localhost:8080/api/v1/catHotels
+Authorization: Basic admin admin
+Content-Type: application/json
+
+{
+  "id": "1",
+  "name": "Cat hotel",
+  "location": "123 Main Street, Cat City",
+  "capacity": 20,
+  "availableRooms": 5,
+  "pricePerNight": 25.0,
+  "amenities": [
+    "amenity1",
+    "amenity2",
+    "amenity3"
+  ],
+  "staff": [
+    {
+      "id": "staff1",
+      "name": "Staff Member Name",
+      "role": "VETERINARIAN"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "review1",
+      "author": "Reviewer Name",
+      "rating": 4,
+      "comment": "Nice and cozy place for cats!"
+    }
+  ]
+}
+
+
+### GET user welcome message
+GET http://localhost:8080/api/v1/catHotels/hello-user
+Authorization: Basic admin admin
+Content-Type: application/json
+###
+
+### GET admin welcome message
+GET http://localhost:8080/api/v1/catHotels/hello-admin
+Authorization: Basic admin admin
+Content-Type: application/json
+###
+
+### GET unknown welcome message
+GET http://localhost:8080/api/v1/catHotels/hello-unknown
+Authorization: Basic admin admin
+Content-Type: application/json
+###
+
