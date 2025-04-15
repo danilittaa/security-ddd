@@ -23,7 +23,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @Builder
 @ToString
-public class CatHotel {
+public class CatHotel extends AuditMetaData{
     @Id
     private String id;
     private String name;
