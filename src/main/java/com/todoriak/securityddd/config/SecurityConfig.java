@@ -9,9 +9,12 @@ package com.todoriak.securityddd.config;
     @since 04.04.2025 - 11.53
 */
 
+import org.springframework.aop.Advisor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -24,7 +27,12 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
+
+    public static Advisor preAuthorizeInterceptor() {
+        return AuthorizationManagerBeforeMethodInterceptor.preAuthorize();
+    }
 
     @Bean
     public static PasswordEncoder passwordEncoder() {
@@ -36,10 +44,10 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(req ->
                         req.requestMatchers("/index.html").permitAll()
-                                .requestMatchers("/api/v1/catHotels/hello-admin").hasRole("ADMIN")
-                                .requestMatchers("/api/v1/catHotels/hello-user").hasRole("USER")
-                                .requestMatchers("/api/v1/catHotels/hello-unknown").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
-                                .requestMatchers("/api/v1/catHotels").hasRole("SUPERADMIN")
+//                                .requestMatchers("/api/v1/catHotels/hello-admin").hasRole("ADMIN")
+//                                .requestMatchers("/api/v1/catHotels/hello-user").hasRole("USER")
+//                                .requestMatchers("/api/v1/catHotels/hello-unknown").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
+//                                .requestMatchers("/api/v1/catHotels").hasRole("SUPERADMIN")
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults());
 
