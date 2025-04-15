@@ -39,7 +39,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/v1/catHotels/hello-admin").hasRole("ADMIN")
                                 .requestMatchers("/api/v1/catHotels/hello-user").hasRole("USER")
                                 .requestMatchers("/api/v1/catHotels/hello-unknown").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
-                                .requestMatchers("/api/v1/catHotels/**").hasRole("SUPERADMIN")
+                                .requestMatchers("/api/v1/catHotels").hasRole("SUPERADMIN")
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults());
 
