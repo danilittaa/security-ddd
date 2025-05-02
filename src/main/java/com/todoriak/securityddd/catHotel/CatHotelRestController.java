@@ -32,6 +32,7 @@ public class CatHotelRestController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteCatHotel(@PathVariable String id) {
         service.deleteById(id);
     }
