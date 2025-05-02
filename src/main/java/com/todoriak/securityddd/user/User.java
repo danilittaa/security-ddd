@@ -9,10 +9,7 @@ package com.todoriak.securityddd.user;
     @since 02.05.2025 - 12.15
 */
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,8 +20,9 @@ import javax.security.auth.Subject;
 import java.security.Principal;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
+@Getter
+@Setter
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -88,5 +86,9 @@ public class User implements UserDetails, Principal {
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public String getFullName(){
+        return firstName + " " + lastName;
     }
 }
