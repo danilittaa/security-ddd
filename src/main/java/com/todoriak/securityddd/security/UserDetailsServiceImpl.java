@@ -12,6 +12,7 @@ package com.todoriak.securityddd.security;
 import com.todoriak.securityddd.user.Role;
 import com.todoriak.securityddd.user.User;
 import com.todoriak.securityddd.user.UserRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -31,13 +32,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //    @PostConstruct
 //    void init() {
 //        User user = User.builder()
-//                .firstName("Dana")
-//                .lastName("Todoriak")
-//                .email("todoriak@mail.com")
+//                .firstName("SuperAdmin")
+//                .lastName("SuperAdmin")
+//                .email("superAdmin@gmail.com")
 //                .password(passwordEncoder.encode("password"))
 //                .enabled(true)
 //                .accountLocked(false)
-//                .roles(List.of(Role.USER))
+//                .roles(List.of(Role.SUPERADMIN))
 //                .build();
 //        repository.save(user);
 //    }

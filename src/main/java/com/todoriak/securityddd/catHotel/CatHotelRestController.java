@@ -32,7 +32,7 @@ public class CatHotelRestController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void deleteCatHotel(@PathVariable String id) {
         service.deleteById(id);
     }
@@ -48,25 +48,25 @@ public class CatHotelRestController {
     }
 
     @GetMapping("/hello-user")
-    @PreAuthorize("hasRole('USER')")
-    public String helloUser(){
+    @PreAuthorize("hasAuthority('USER')")
+    public String helloUser() {
         return "Hello User";
     }
 
     @GetMapping("/hello-admin")
-    @PreAuthorize("hasRole('ADMIN')")
-    public String helloAdmin(){
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String helloAdmin() {
         return "Hello Admin";
     }
 
     @GetMapping("/hello-unknown")
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
-    public String helloUnknown(){
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+    public String helloUnknown() {
         return "Hello Unknown";
     }
 
     @GetMapping("/hello-stranger")
-    public String helloStranger(){
+    public String helloStranger() {
         return "Hello Stranger";
     }
 }
